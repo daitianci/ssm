@@ -1,0 +1,4 @@
+com\honor\ssm\controller\RegistController.class
+com\honor\ssm\entity\User.class
+com\honor\ssm\service\UserService.class
+com\honor\ssm\service\impl\UserServiceImpl.class
