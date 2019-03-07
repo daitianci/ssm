@@ -1,11 +1,14 @@
 package com.honor.ssm.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.honor.ssm.entity.TUser;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.Map;
+
 /**
  * <p>
- *  服务类
+ * 用户信息表 服务类
  * </p>
  *
  * @author daitianci
@@ -13,4 +16,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ITUserService extends IService<TUser> {
 
+    IPage<Map> customPage(Integer page, Integer rows);
 }

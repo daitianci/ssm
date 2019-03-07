@@ -2,14 +2,12 @@ package com.honor.ssm.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
-import java.time.LocalDate;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
 
 /**
  * <p>
- * 
+ * 用户信息表
  * </p>
  *
  * @author daitianci
@@ -19,92 +17,81 @@ public class TUser extends Model<TUser> {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "USER_ID", type = IdType.AUTO)
-    private Integer userId;
+    /**
+     * 用户 ID
+     */
+    @TableId(value = "id", type = IdType.AUTO)
+    private Integer id;
 
-    @TableField("USER_NAME")
-    private String userName;
+    /**
+     * 用户名
+     */
+    private String username;
 
-    @TableField("USER_PWD")
-    private String userPwd;
+    /**
+     * 密码
+     */
+    private String password;
 
-    @TableField("REG_DATE")
-    private LocalDate regDate;
+    /**
+     * 昵称
+     */
+    private String nickname;
 
-    @TableField("GROUP_ID")
-    private Integer groupId;
+    /**
+     * 状态:1 启用,2 禁用
+     */
+    private Integer status;
 
-    @TableField("LOCKED")
-    private Integer locked;
-
-    @TableField("USER_SALT")
-    private String userSalt;
-
-    public Integer getUserId() {
-        return userId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setId(Integer id) {
+        this.id = id;
     }
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-    public String getUserPwd() {
-        return userPwd;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserPwd(String userPwd) {
-        this.userPwd = userPwd;
+    public void setUsername(String username) {
+        this.username = username;
     }
-    public LocalDate getRegDate() {
-        return regDate;
-    }
-
-    public void setRegDate(LocalDate regDate) {
-        this.regDate = regDate;
-    }
-    public Integer getGroupId() {
-        return groupId;
+    public String getPassword() {
+        return password;
     }
 
-    public void setGroupId(Integer groupId) {
-        this.groupId = groupId;
+    public void setPassword(String password) {
+        this.password = password;
     }
-    public Integer getLocked() {
-        return locked;
-    }
-
-    public void setLocked(Integer locked) {
-        this.locked = locked;
-    }
-    public String getUserSalt() {
-        return userSalt;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setUserSalt(String userSalt) {
-        this.userSalt = userSalt;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     @Override
     protected Serializable pkVal() {
-        return this.userId;
+        return this.id;
     }
 
     @Override
     public String toString() {
         return "TUser{" +
-        "userId=" + userId +
-        ", userName=" + userName +
-        ", userPwd=" + userPwd +
-        ", regDate=" + regDate +
-        ", groupId=" + groupId +
-        ", locked=" + locked +
-        ", userSalt=" + userSalt +
+        "id=" + id +
+        ", username=" + username +
+        ", password=" + password +
+        ", nickname=" + nickname +
+        ", status=" + status +
         "}";
     }
 }
