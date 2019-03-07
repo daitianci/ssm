@@ -10,6 +10,7 @@ import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 // 演示例子，执行 main 方法控制台输入模块表名回车自动生成对应项目目录中
 public class CodeGenerator {
@@ -40,7 +41,7 @@ public class CodeGenerator {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/test?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true");//oa为我自己的数据库
+        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/oa?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true");//oa为我自己的数据库
         //dsc.setDriverName("com.mysql.cj.jdbc.Driver"); //设置数据库驱动,因为我的数据库版本是mysql5.7,所以使用该驱动
         dsc.setDriverName("com.mysql.jdbc.Driver"); //mysql5.6以下的驱动
         dsc.setUsername("root"); //数据库名称
@@ -77,6 +78,7 @@ public class CodeGenerator {
         StrategyConfig strategy = new StrategyConfig();
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
+        strategy.setInclude("t_user","t_group");//需要包含的表名，允许正则表达式
         mpg.setStrategy(strategy);
         mpg.setTemplateEngine(new FreemarkerTemplateEngine());
         mpg.execute();
