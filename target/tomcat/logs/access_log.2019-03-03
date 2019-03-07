@@ -1,7 +1,0 @@
-0:0:0:0:0:0:0:1 - - [03/Mar/2019:10:28:20 +0800] "GET /ssm/editUser/daitc HTTP/1.1" 200 6265 http-bio-8080-exec-2 668
-0:0:0:0:0:0:0:1 - - [03/Mar/2019:10:28:36 +0800] "GET /ssm/editUser/daitc HTTP/1.1" 200 197 http-bio-8080-exec-3 18
-0:0:0:0:0:0:0:1 - - [03/Mar/2019:10:28:43 +0800] "GET /ssm/editUser/daitc HTTP/1.1" 200 211 http-bio-8080-exec-5 22
-0:0:0:0:0:0:0:1 - - [03/Mar/2019:10:29:18 +0800] "GET /ssm/editUser/daitc HTTP/1.1" 500 5360 http-bio-8080-exec-6 37
-0:0:0:0:0:0:0:1 - - [03/Mar/2019:10:29:24 +0800] "GET /ssm/editUser/daitc HTTP/1.1" 200 251 http-bio-8080-exec-7 10
-0:0:0:0:0:0:0:1 - - [03/Mar/2019:10:31:47 +0800] "GET /ssm/editUser/daitc HTTP/1.1" 200 251 http-bio-8080-exec-10 10
-0:0:0:0:0:0:0:1 - - [03/Mar/2019:10:31:52 +0800] "GET /ssm/editUser/daitc HTTP/1.1" 200 251 http-bio-8080-exec-10 10
