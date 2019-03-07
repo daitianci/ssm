@@ -59,14 +59,18 @@
         <property name="filters" value="stat"/>
     </bean>
 
-    <!--配置SessionFactory-->
+    <!--配置mybatis plus SessionFactory-->
     <bean id="sqlSessionFactory" class="com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean">
+        <!--mybatis SessionFactory的配置方法-->
+    <!--<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">-->
         <property name="dataSource" ref="dataSource"/>
         <!--加载mybatis配置文件-->
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
         <!--自动扫描mapper文件夹底下的xml文件-->
-        <property name="mapperLocations" value="classpath:mappers/*.xml"/>
+        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+        <!--<property name="typeAliasesPackage" value="com.honor.ssm.entity.*"/>-->
     </bean>
+
 
     <!--扫描mybatis mapper接口-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">

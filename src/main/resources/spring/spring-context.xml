@@ -23,4 +23,6 @@
 
     <!--开启aop切片-->
     <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+
+    <import resource="classpath:spring/spring-datasource.xml"/>
 </beans>
