@@ -129,19 +129,19 @@
             <artifactId>velocity-engine-core</artifactId>
             <version>${velocity-engine-core.version}</version>
         </dependency>
-        <!-- sfl4j -->
+        <!--logback需要引入slf4j-api-->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j-api.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>${slf4j-api.version}</version>
-        </dependency>
-
-        <!-- Logback日志 -->
+        <!-- sfl4j log4j方式处理日志需要记载-->
+        <!--<dependency>-->
+            <!--<groupId>org.slf4j</groupId>-->
+            <!--<artifactId>slf4j-log4j12</artifactId>-->
+            <!--<version>${slf4j-api.version}</version>-->
+        <!--</dependency>-->
+        <!-- Logback日志 可以在系统运行时候动态修改日志配置-->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
@@ -152,6 +152,7 @@
             <artifactId>logback-core</artifactId>
             <version>${logback-classic.version}</version>
         </dependency>
+
 
         <!--fastjson spring-mvc需要mvc:annotation-driven额外的配置FastJsonHttpMessageConverter-->
         <!--<dependency>-->
