@@ -68,6 +68,12 @@
             <artifactId>spring-aspects</artifactId>
             <version>${spring-web.version}</version>
         </dependency>
+        <!--后台接收xml参数绑定的时候需要引入-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-oxm</artifactId>
+            <version>${spring-web.version}</version>
+        </dependency>
         <!--进行单元测试必须导入-->
         <dependency>
             <groupId>org.springframework</groupId>

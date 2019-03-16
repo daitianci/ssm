@@ -3,10 +3,15 @@ package com.honor.ssm.controller;
 import com.honor.ssm.entity.Admin;
 import com.honor.ssm.entity.User;
 import com.honor.ssm.entity.UserForm;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -39,6 +44,26 @@ public class ModelController {
     @ResponseBody
     public String getAge1(Integer age) {
         return "age:" + age;
+    }
+
+    /**
+     * 接收日期格式参数的时候，可以定义日期的格式
+     * http://localhost:8080/ssm/user/date?date=2019-03-16
+     * 扩展：可以接收自定义的格式的参数，通过webdatabinder.registercustomeditor
+     * 缺点：非全局，只是针对某个参数名
+     * 参考https://blog.csdn.net/c5113620/article/details/79023137
+     * @param date
+     * @return
+     */
+    @RequestMapping("/date")
+    @ResponseBody
+    public String getDate(Date date) {
+        return date.toString();
+    }
+
+    @InitBinder("date")
+    public void initDate(WebDataBinder webDataBinder){
+        webDataBinder.registerCustomEditor(Date.class,new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"),true));
     }
 
     /**
@@ -77,6 +102,21 @@ public class ModelController {
     @ResponseBody
     public String getUser(User user) {
         return user.toString();
+    }
+
+    /**
+     * 接收xml参数，并且解析
+     * pom 文件需要引入spring-oxm
+     * testUserList02.html
+     * 参数接收多层级对象，例如属性里也有实体
+     *
+     * @param admin
+     * @return
+     */
+    @RequestMapping("/xml")
+    @ResponseBody
+    public String getUserByXml(@RequestBody Admin admin) {
+        return admin.toString();
     }
 
     /**
@@ -135,7 +175,7 @@ public class ModelController {
     }
 
     /**
-     * 推荐方法
+     * 推荐方法,支持多级结构，比较实用
      * testUserList.html
      * 这里采用前端json格式化的办法 此处参数前面需要添加 @RequestBody 否则无法接收
      * 页面的数组参数的传递有两种办法

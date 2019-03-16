@@ -1,12 +1,17 @@
 package com.honor.ssm.entity;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**用来测试spring mvc数据绑定
  * Created by 戴天赐 on 2019/3/16.
  */
+@XmlRootElement(name="admin")
 public class Admin {
     private String name;
     private Integer age;
 
+    @XmlElement(name = "name")
     public String getName() {
         return name;
     }
@@ -15,6 +20,7 @@ public class Admin {
         this.name = name;
     }
 
+    @XmlElement(name = "age")
     public Integer getAge() {
         return age;
     }

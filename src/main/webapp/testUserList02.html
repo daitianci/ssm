@@ -8,27 +8,22 @@
 </head>
 <body>
 <form id="formDemo" action="" method="post">
-    用户名：<input type="text" name="name[0]" value="tom"><br/>
-    年龄：<input type="text" name="age[0]" value="10"><br/>
-    用户名：<input type="text" name="name[1]" value="lucy"><br/>
-    年龄：<input type="text" name="age[1]" value="20"><br/>
     <input type="button" onclick="addUser()" value="submit">
 </form>
 <script type="text/javascript">
     function addUser(){
-        var objs = [];
-        objs.push({name: 'a', age: 3,userInfo:{phone:'10086',address:'test'}});
-        objs.push({name: 'b', age: 4,infos:[{phone:'10086',address:'test'},{phone:'12305',address:'car'}]});
-//        var data = JSON.stringify($('#formDemo').serializeJSON()); 该方法整理出来的是一个name数组age数组，并非真正的json list集合
-        var data = JSON.stringify(objs);
+        var data ="<admin>"+
+                      "<name>tom</name>"+
+                      "<age>1</age>"+
+                   "</admin>";
         $.ajax({
             type: "POST",
-            url: "/ssm/user/list",
+            url: "/ssm/user/xml",
             data: data,
             //设置返回的是json
             dataType: "json",
             //设置发送的是json
-            contentType:"application/json",
+            contentType:"application/xml",
             async : false,
             success : function(data){
                 alert(data);
