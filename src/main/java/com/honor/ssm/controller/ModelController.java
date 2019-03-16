@@ -135,11 +135,12 @@ public class ModelController {
     }
 
     /**
+     * 推荐方法
      * testUserList.html
      * 这里采用前端json格式化的办法 此处参数前面需要添加 @RequestBody 否则无法接收
      * 页面的数组参数的传递有两种办法
      * 1、设置UserForm方式接收参数
-     * 2、在页面时候把数据json格式化
+     * 2、在页面时候把数据json格式化（推荐方法）
      *
      * @param users
      * @return
@@ -154,6 +155,7 @@ public class ModelController {
      * testUserList01.html
      * 这里采用前端form格式化的办法,将集合定义成一个form实体接收，表单对应的字段name需要更好
      * 例如users[0].name
+     * 请求的索引一定要连续，否则会有bug
      * 页面的数组参数的传递有两种办法
      * 1、设置UserForm方式接收参数
      * 2、在页面时候把数据json格式化
