@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>formToJson list receive</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.0/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/jquery.serializeJSON/2.9.0/jquery.serializejson.min.js"></script>
+</head>
+<body>
+<form id="formDemo" action="" method="post">
+    用户名：<input type="text" name="name[0]" value="tom"><br/>
+    年龄：<input type="text" name="age[0]" value="10"><br/>
+    用户名：<input type="text" name="name[1]" value="lucy"><br/>
+    年龄：<input type="text" name="age[1]" value="20"><br/>
+    <input type="button" onclick="addUser()" value="submit">
+</form>
+<script type="text/javascript">
+    function addUser(){
+        var objs = [];
+        objs.push({name: 'a', age: 3});
+        objs.push({name: 'b', age: 4});
+//        var data = JSON.stringify($('#formDemo').serializeJSON()); 该方法整理出来的是一个name数组age数组，并非真正的json list集合
+        var data = JSON.stringify(objs);
+        $.ajax({
+            type: "POST",
+            url: "/ssm/user/list",
+            data: data,
+            //设置返回的是json
+            dataType: "json",
+            //设置发送的是json
+            contentType:"application/json",
+            async : false,
+            success : function(data){
+                alert(data);
+            }
+        });
+    }
+</script>
+</body>
+</html>
