@@ -11,7 +11,7 @@ import java.io.Serializable;
  * </p>
  *
  * @author daitianci
- * @since 2019-03-07
+ * @since 2019-03-27
  */
 public class TUser extends Model<TUser> {
 
