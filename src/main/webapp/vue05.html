@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>hello vue</title>
+        <script src="js/vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <input v-model="name">
+            <button @click="handleClick">submit</button>
+            <ul>
+                <li v-for="(item,index) in list" :key="index">{{item}}</li>
+            </ul>
+        </div>
+        <script>
+            new Vue({
+                el: "#root",
+                data: {
+                    name:"",
+                    list:[]
+                },
+                methods: {
+                    handleClick:function () {
+                        this.list.push(this.name);
+                        this.name = "";
+                    }
+                },
+                computed: {},
+                watch: {}
+            })
+        </script>
+    </body>
+</html>
