@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>hello vue</title>
+        <script src="js/vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <!--v-if只有为true的时候，dom元素才会存在-->
+            <!--v-show只是样式隐藏，v-if是dom移除加载-->
+            <div v-show="show">hello world</div>
+            <button @click="handleClick">toggle</button>
+            <ul>
+                <!--增加key值可以提升效率,指定key值为index-->
+                <li v-for="(item,index) of list" :key="index">{{item}}</li>
+            </ul>
+        </div>
+        <script>
+            new Vue({
+                el: "#root",
+                data: {
+                    show: true,
+                    list:["a","b","c"]
+                },
+                methods: {
+                    handleClick:function () {
+                        this.show = !this.show
+                    }
+                },
+                computed: {},
+                watch: {}
+            })
+        </script>
+    </body>
+</html>

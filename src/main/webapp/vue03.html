@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>hello vue</title>
+        <script src="js/vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            姓：<input v-model="firstName">
+            名：<input v-model="lastName">
+            <div>{{fullName}}</div>
+            <div>{{count}}</div>
+        </div>
+        <script>
+            new Vue({
+                el: "#root",
+                data: {
+                    firstName: "",
+                    lastName: "",
+                    count:0
+                },
+                methods:{
+
+                },
+                computed: {
+                    //计算属性的写法
+                    fullName: function () {
+                        return this.firstName + " " + this.lastName
+                    }
+                },
+                watch:{
+                    //监听器的用法,也可以监听计算属性fullName的变化，更简单
+                    firstName: function () {
+                        this.count++;
+                    },
+                    lastName: function () {
+                        this.count++;
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
