@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>hello vue</title>
+        <script src="js/vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <!--利用v-bing进行属性绑定,=号后面跟的是一个js表达式，title指向变量title-->
+            <div v-bind:title="title">hello world</div>
+            <!--v-bing:可以简写成:-->
+            <div :title="title">hello world</div>
+
+            <!--双向数据绑定v-model,就是表单的原理所在-->
+            <input v-model="content">
+            <div>{{content}}</div>
+        </div>
+        <script>
+            new Vue({
+                el: "#root",
+                data: {
+                    title: "this is title",
+                    content:"this is content"
+                },
+                methods: {}
+            })
+        </script>
+    </body>
+</html>

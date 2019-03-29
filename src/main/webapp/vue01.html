@@ -6,12 +6,24 @@
         <script src="js/vue.js"></script>
     </head>
     <body>
-        <div id="root">{{msg}}</div>
+        <div id="root">
+            {{msg}}
+            <div v-on:click="handleClick">{{content}}</div>
+            <!--v-on:可以简写成@-->
+            <div @click="handleClick">{{content}}</div>
+        </div>
         <script>
             new Vue({
                 el: "#root",
                 data: {
-                    msg: "hello vue"
+                    msg: "hello vue",
+                    content:"haha"
+                },
+                methods:{
+                    handleClick:function () {
+                        alert(123);
+                        this.content = "world"
+                    }
                 }
             })
         </script>
