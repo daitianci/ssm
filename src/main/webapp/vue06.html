@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>hello vue</title>
+        <script src="js/vue.js"></script>
+    </head>
+    <body>
+        <div id="root">
+            <input v-model="name">
+            <button @click="handleClick">submit</button>
+            <ul>
+                <!--:content传递一个名字为content的参数-->
+                <!-- @delete监听子组件的方法，一旦子组件向外抛了delete方法，则出发handleDelete方法-->
+                <todo-item v-for="(item,index) in list" :key="index" :content="item" :index="index"
+                    @delete="handleDelete" ></todo-item>
+            </ul>
+        </div>
+        <script>
+
+            //每一个vue组件都是一个vue实例
+            Vue.component("todo-item",{
+                //接收参数
+                props:["content","index"],
+                //通过{{x}}调用参数
+                template:"<li @click='handleClick'>{{content}}</li>",
+                methods: {
+                    handleClick:function () {
+                        //子组件向外触发一个delete事件，并且将index作为参数传递出去
+                        this.$emit("delete",this.index);
+                    }
+                }
+            })
+
+            new Vue({
+                el: "#root",
+                data: {
+                    name:"",
+                    list:[]
+                },
+                methods: {
+                    handleClick:function () {
+                        this.list.push(this.name);
+                        this.name = "";
+                    },
+                    //接收子组件向外抛的index参数
+                    handleDelete:function (index) {
+                        //从index开始，删除1个数据
+                        this.list.splice(index,1);
+                    }
+                },
+                computed: {},
+                watch: {}
+            })
+        </script>
+    </body>
+</html>
