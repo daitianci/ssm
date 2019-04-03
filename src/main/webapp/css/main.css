@@ -1,0 +1,161 @@
+/*清除元素默认属性*/
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+}
+
+body {
+    background-color: #F5F5F5;
+}
+
+.top {
+    width: 100%;
+    height: 27px;
+    background: url("../images/top_bg.jpg") repeat-x;
+}
+
+.top_content {
+    width: 1000px;
+    /*宽度设死的情况下，上下间距0左右自动，水平居中*/
+    margin: 0 auto;
+}
+
+/*设置li图标,文字垂直居中*/
+.top_content li {
+    list-style-image: url("../images/li_bg.gif");
+    float: right;
+    width: 70px;
+    line-height: 27px;
+}
+
+/*控制top_content底下的超链接样式
+  a:link超链接的初始样式 a:visited超链接访问过的样式
+*/
+.top_content a:link, .top_content a:visited {
+    color: #8E8E8E;
+    /*取消超链接下划线*/
+    text-decoration: none;
+}
+
+.top_content a:hover {
+    color: red;
+    /*取消超链接下划线*/
+    text-decoration: none;
+}
+
+.wrap {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.logo {
+    /*80px是因为logo为200*80px*/
+    height: 80px;
+    /*跟logo图片底色一致，避免分界色差*/
+    background-color: #FFF;
+}
+
+.logo_left {
+    width: 200px;
+    float: left;
+}
+
+.logo_right {
+    width: 300px;
+    float: right;
+    /*28px是因为电话图片为28*28*/
+    height: 28px;
+    /*垂直居中设置，(80-28)/2 = 26,父div高80，扣除上下边距得出*/
+    margin-top: 26px;
+    /*设置文字颜色*/
+    color: #8E8E8E;
+}
+
+.logo_right img {
+    /*使文字垂直居种，通过设置img的垂直居种达到目的*/
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.tel {
+    font-family: 微软雅黑;
+    font-size: 16px;
+    color: #C00;
+}
+
+.nav {
+    float: left;
+    height: 40px;
+}
+
+.nav_left {
+    width: 10px;
+    background: url("../images/nav_left.jpg") no-repeat;
+}
+
+.nav_mid {
+    width: 980px;
+    background: url("../images/nav_bg.jpg") repeat-x;
+}
+
+.nav_right {
+    width: 10px;
+    background: url("../images/nav_right.jpg") no-repeat;
+}
+
+.nav_left, .nav_mid, .nav_right {
+    float: left;
+    /*必须设置，不然出不来*/
+    height: 40px;
+}
+
+.nav_mid_left, .nav_mid_right {
+    float: left;
+}
+
+.nav_mid_left {
+    width: 680px;
+}
+
+.nav_mid_right {
+    width: 300px;
+}
+
+.nav_mid_left li {
+    float: left;
+    /*去掉小圆点*/
+    list-style-type: none;
+    /*拉开导航条距离*/
+    width: 100px;
+    /*文字居种*/
+    text-align: center;
+    line-height: 40px;
+}
+
+.nav_mid_left a:link, .nav_mid_left a:visited {
+    text-decoration: none;
+    color: #FFF;
+    font-size: 16px;
+    font-family: 微软雅黑;
+}
+
+.nav_mid_left a:hover, .nav_mid_left a:active {
+    text-decoration: none;
+    color: #FF0;
+    font-size: 16px;
+    font-family: 微软雅黑;
+}
+
+.search_text {
+    width: 190px;
+    height: 25px;
+    margin-top: 6px;
+    /*right靠右 center垂直居中*/
+    background: url("../images/search.jpg") no-repeat right center;
+    background-color: #FFF;
+    /*防止文字挡住图片*/
+    padding-right: 25px;
+    border: 1px solid #FFF;
+}
+
