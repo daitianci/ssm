@@ -4,9 +4,11 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <settings>
+        <!--autoMappingBehavior属性自动开启，就是sql字段会自动映射到entity属性，需要开启自动驼峰命名规则，否则没办法自动匹配-->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
     <plugins>
+        <!--mybatis plus分页插件-->
         <plugin interceptor="com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor"></plugin>
     </plugins>
 </configuration>
