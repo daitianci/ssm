@@ -20,7 +20,10 @@
     <!-- 1、将数据库连接参数化，
         建议键值带 jdbc. 前缀，否则如果使用 username ，Spring 框架会优先使用系统变量 username
         而不会使用我们在配置文件中使用的键 username -->
-    <context:property-placeholder location="classpath:jdbc.properties"/>
+
+    <!-- 加载配置文件 -->
+    <!--加载多个配置文件时候ignore-unresolvable="true"不能省略-->
+    <context:property-placeholder location="classpath:jdbc.properties" ignore-unresolvable="true"/>
 
     <!-- 配置数据源 -->
     <!-- 使用的数据库连接池产品是 Driud  -->
