@@ -1,6 +1,7 @@
 package com.honor.ssm.service.impl;
 
 import com.honor.ssm.entity.TUser;
+import com.honor.ssm.entity.User;
 import com.honor.ssm.mapper.TUserMapper;
 import com.honor.ssm.service.ITUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -23,20 +24,20 @@ import java.util.List;
 @Service
 public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements ITUserService {
     @Override
-    @CachePut(value = "userCache")
+    @CachePut(value = "user",key = "#user.getId()")
     public TUser saveNew(TUser user) {
         super.save(user);
         return user;
     }
 
     @Override
-    @Cacheable(value = "userCache")//
+    @Cacheable(value = "user",key = "#id")
     public TUser getByIdNew(Serializable id) {
         return super.getById(id);
     }
 
     @Override
-    @CacheEvict(cacheNames = "userCache", allEntries = true)
+    @CacheEvict(cacheNames = "user", allEntries = true)
     public List<TUser> listNew() {
         return super.list();
     }

@@ -16,34 +16,34 @@
     <!-- redis数据源 -->
     <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
         <!-- 最大空闲数 -->
-        <property name="maxIdle" value="${redis.maxIdle}" />
+        <property name="maxIdle" value="${redis.maxIdle}"/>
         <!-- 最大空连接数 -->
-        <property name="maxTotal" value="${redis.maxTotal}" />
+        <property name="maxTotal" value="${redis.maxTotal}"/>
         <!-- 最大等待时间 -->
-        <property name="maxWaitMillis" value="${redis.maxWaitMillis}" />
+        <property name="maxWaitMillis" value="${redis.maxWaitMillis}"/>
         <!-- 连接超时时是否阻塞，false时报异常,ture阻塞直到超时, 默认true -->
-        <property name="blockWhenExhausted" value="${redis.blockWhenExhausted}" />
+        <property name="blockWhenExhausted" value="${redis.blockWhenExhausted}"/>
         <!-- 返回连接时，检测连接是否成功 -->
-        <property name="testOnBorrow" value="${redis.testOnBorrow}" />
+        <property name="testOnBorrow" value="${redis.testOnBorrow}"/>
     </bean>
 
     <!-- Spring-redis连接池管理工厂 -->
     <bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
         <!-- IP地址 -->
-        <property name="hostName" value="${redis.host}" />
+        <property name="hostName" value="${redis.host}"/>
         <!-- 端口号 -->
-        <property name="port" value="${redis.port}" />
+        <property name="port" value="${redis.port}"/>
         <!-- 超时时间 默认2000-->
-        <property name="timeout" value="${redis.timeout}" />
+        <property name="timeout" value="${redis.timeout}"/>
         <!-- 连接池配置引用 -->
-        <property name="poolConfig" ref="poolConfig" />
+        <property name="poolConfig" ref="poolConfig"/>
         <!-- usePool：是否使用连接池 -->
         <property name="usePool" value="true"/>
     </bean>
 
     <!-- redis template definition -->
     <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
-        <property name="connectionFactory" ref="jedisConnectionFactory" />
+        <property name="connectionFactory" ref="jedisConnectionFactory"/>
         <!-- 如果不配置Serializer，那么存储的时候只能使用String，如果用对象类型存储，那么会提示错误 can't cast to String！！！-->
         <property name="keySerializer">
             <!--对key的默认序列化器。默认值是StringSerializer-->
@@ -67,10 +67,30 @@
     <bean class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration"/>
 
     <!--声明式缓存-->
-    <bean id="cacheManager" class="org.springframework.data.redis.cache.RedisCacheManager">
-        <constructor-arg ref="redisTemplate" />
+   <!-- <bean id="cacheManager" class="org.springframework.data.redis.cache.RedisCacheManager">
+        <constructor-arg ref="redisTemplate"/>
+    </bean>-->
+
+    <bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">
+        <property name="caches">
+            <set>
+                <bean class="org.springframework.data.redis.cache.RedisCache">
+                    <constructor-arg name="redisOperations" ref="redisTemplate"/>
+                    <constructor-arg name="name" value="user"/>
+                    <constructor-arg name="prefix" value=""/>
+                    <constructor-arg name="expiration" value="10"/>
+                </bean>
+                <bean class="org.springframework.data.redis.cache.RedisCache">
+                    <constructor-arg name="redisOperations" ref="redisTemplate"/>
+                    <constructor-arg name="name" value="default"/>
+                    <constructor-arg name="prefix" value="DEF:"/> <!--这是通用的前缀-->
+                    <constructor-arg name="expiration" value="60"/> <!--这里的单位是秒-->
+                </bean>
+            </set>
+        </property>
     </bean>
 
+
     <!-- 启用缓存注解功能,否则注解不会生效 -->
-    <cache:annotation-driven cache-manager="cacheManager" />
+    <cache:annotation-driven cache-manager="cacheManager"/>
 </beans>
