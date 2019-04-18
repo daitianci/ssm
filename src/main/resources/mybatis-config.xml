@@ -6,6 +6,12 @@
     <settings>
         <!--autoMappingBehavior属性自动开启，就是sql字段会自动映射到entity属性，需要开启自动驼峰命名规则，否则没办法自动匹配-->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!--设置懒加载-->
+        <!--<setting name="lazyLoadingEnabled" value="true"/>-->
+        <!--经常跟lazyLoadingEnabled配合使用，但是我们默认是不懒加载，在xml查询方法中配置fetch=lazy小开关开启懒加载，以免影响其他方
+            法的调用，在这里运用于嵌套查询，以免造成N+1查询，aggressiveLazyLoading必须关闭，否则执行了实例的任何一个方法都会触发加载
+            而不是懒加载的属性，阻碍延迟加载-->
+        <setting name="aggressiveLazyLoading" value="false"/>
     </settings>
     <plugins>
         <!--mybatis plus分页插件-->
