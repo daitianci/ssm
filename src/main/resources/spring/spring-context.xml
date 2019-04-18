@@ -25,4 +25,6 @@
     <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 
     <import resource="classpath:spring/spring-datasource.xml"/>
+
+    <import resource="classpath:spring/spring-redis.xml"/>
 </beans>

@@ -255,7 +255,7 @@ body {
     /*设置行间距*/
     margin-top: 8px;
     border-bottom: 1px dotted #CCC;
-    padding-right: 5px;
+    /*padding-right: 5px;*/
 }
 
 .news_list a:link, .news_list a:visited {
