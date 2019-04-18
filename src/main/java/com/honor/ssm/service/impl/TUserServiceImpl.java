@@ -4,7 +4,13 @@ import com.honor.ssm.entity.TUser;
 import com.honor.ssm.mapper.TUserMapper;
 import com.honor.ssm.service.ITUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * <p>
@@ -16,5 +22,22 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements ITUserService {
+    @Override
+    @CachePut(value = "userCache")
+    public TUser saveNew(TUser user) {
+        super.save(user);
+        return user;
+    }
 
+    @Override
+    @Cacheable(value = "userCache")//
+    public TUser getByIdNew(Serializable id) {
+        return super.getById(id);
+    }
+
+    @Override
+    @CacheEvict(cacheNames = "userCache", allEntries = true)
+    public List<TUser> listNew() {
+        return super.list();
+    }
 }
