@@ -69,6 +69,7 @@
     <!--声明式缓存-->
     <!--<bean id="cacheManager" class="org.springframework.data.redis.cache.RedisCacheManager">-->
         <!--<constructor-arg ref="redisTemplate"/>-->
+        <!--<property name="defaultExpiration" value="1600"/>-->
     <!--</bean>-->
 
     <bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">
@@ -91,6 +92,8 @@
     </bean>
 
 
+    <bean id="keyGenerator" class="com.honor.ssm.tools.CacheKeyGenerator"></bean>
+
     <!-- 启用缓存注解功能,否则注解不会生效 -->
-    <cache:annotation-driven cache-manager="cacheManager"/>
+    <cache:annotation-driven cache-manager="cacheManager" key-generator="keyGenerator"/>
 </beans>

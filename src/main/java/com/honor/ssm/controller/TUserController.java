@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 /**
  * <p>
  * 用户信息表 前端控制器
@@ -52,5 +54,12 @@ public class TUserController {
     @ResponseBody
     public String deleteUser(){
         return userService.deleteByIdNew(36);
+    }
+
+    @RequestMapping("/listUser")
+    @ResponseBody
+    public List<TUser> listUsers(){
+        List<TUser> tUsers = userService.listNew();
+        return tUsers;
     }
 }

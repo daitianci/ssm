@@ -52,9 +52,8 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
     }
 
 
-
     @Override
-//    @CacheEvict(cacheNames = "userCache", allEntries = true)
+    @Cacheable(value = "userCache", keyGenerator = "keyGenerator")
     public List<TUser> listNew() {
         return super.list();
     }
