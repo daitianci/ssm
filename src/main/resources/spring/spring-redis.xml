@@ -76,15 +76,15 @@
             <set>
                 <bean class="org.springframework.data.redis.cache.RedisCache">
                     <constructor-arg name="redisOperations" ref="redisTemplate"/>
-                    <constructor-arg name="name" value="user"/>
-                    <constructor-arg name="prefix" value=""/>
-                    <constructor-arg name="expiration" value="10"/>
+                    <constructor-arg name="name" value="userCache"/>
+                    <constructor-arg name="prefix" value="user"/>
+                    <constructor-arg name="expiration" value="1800"/>
                 </bean>
                 <bean class="org.springframework.data.redis.cache.RedisCache">
                     <constructor-arg name="redisOperations" ref="redisTemplate"/>
                     <constructor-arg name="name" value="default"/>
                     <constructor-arg name="prefix" value="DEF:"/> <!--这是通用的前缀-->
-                    <constructor-arg name="expiration" value="60"/> <!--这里的单位是秒-->
+                    <constructor-arg name="expiration" value="1800"/> <!--这里的单位是秒-->
                 </bean>
             </set>
         </property>

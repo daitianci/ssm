@@ -37,6 +37,6 @@ public class TUserController {
     @RequestMapping("/getUser")
     @ResponseBody
     public TUser getUser(){
-        return userService.getByIdNew(18);
+        return userService.getByIdNew(33);
     }
 }

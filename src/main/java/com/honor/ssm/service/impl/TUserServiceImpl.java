@@ -24,20 +24,20 @@ import java.util.List;
 @Service
 public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements ITUserService {
     @Override
-    @CachePut(value = "user",key = "#user.getId().toString()")
+    @CachePut(value = "userCache",key = "#user.getId().toString()")
     public TUser saveNew(TUser user) {
         super.save(user);
         return user;
     }
 
     @Override
-    @Cacheable(value = "user",key = "#id.toString()")
+    @Cacheable(value = "userCache",key = "#id.toString()")
     public TUser getByIdNew(Integer id) {
         return super.getById(id);
     }
 
     @Override
-    @CacheEvict(cacheNames = "user", allEntries = true)
+    @CacheEvict(cacheNames = "userCache", allEntries = true)
     public List<TUser> listNew() {
         return super.list();
     }
