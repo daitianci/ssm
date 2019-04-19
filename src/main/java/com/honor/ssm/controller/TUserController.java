@@ -48,4 +48,9 @@ public class TUserController {
         return userService.updateByIdNew(user);
     }
 
+    @RequestMapping("/deleteUser")
+    @ResponseBody
+    public String deleteUser(){
+        return userService.deleteByIdNew(36);
+    }
 }

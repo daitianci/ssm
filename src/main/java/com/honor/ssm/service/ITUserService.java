@@ -25,5 +25,7 @@ public interface ITUserService extends IService<TUser> {
 
     TUser updateByIdNew(TUser user);
 
+    String deleteByIdNew(Integer id);
+
     List<TUser> listNew();
 }

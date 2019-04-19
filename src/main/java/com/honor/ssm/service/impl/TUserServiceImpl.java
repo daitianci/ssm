@@ -43,8 +43,18 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
         return user;
     }
 
+
     @Override
-    @CacheEvict(cacheNames = "userCache", allEntries = true)
+    @CacheEvict(value = "userCache", key = "#id.toString()")
+    public String deleteByIdNew(Integer id) {
+        super.removeById(id);
+        return "succeed";
+    }
+
+
+
+    @Override
+//    @CacheEvict(cacheNames = "userCache", allEntries = true)
     public List<TUser> listNew() {
         return super.list();
     }
