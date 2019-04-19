@@ -24,15 +24,15 @@ import java.util.List;
 @Service
 public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements ITUserService {
     @Override
-    @CachePut(value = "user",key = "#user.getId()")
+    @CachePut(value = "user",key = "#user.getId().toString()")
     public TUser saveNew(TUser user) {
         super.save(user);
         return user;
     }
 
     @Override
-    @Cacheable(value = "user",key = "#id")
-    public TUser getByIdNew(Serializable id) {
+    @Cacheable(value = "user",key = "#id.toString()")
+    public TUser getByIdNew(Integer id) {
         return super.getById(id);
     }
 

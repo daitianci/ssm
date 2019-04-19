@@ -19,12 +19,9 @@ import java.util.List;
  */
 public interface ITUserService extends IService<TUser> {
 
-    @CachePut(value="userCache",key="#user.getId()")
     TUser saveNew(TUser user);
 
-    @Cacheable(value="userCache")//
-    TUser getByIdNew(Serializable id);
+    TUser getByIdNew(Integer id);
 
-    @CacheEvict(cacheNames="userCache", allEntries=true)
     List<TUser> listNew();
 }

@@ -1,7 +1,6 @@
 package com.honor.ssm.controller;
 
 import com.honor.ssm.entity.TUser;
-import com.honor.ssm.entity.User;
 import com.honor.ssm.service.ITUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +29,14 @@ public class TUserController {
         user.setNickname("小天");
         user.setUsername("daitianci");
         user.setPassword("123");
+        user.setStatus(1);
         userService.saveNew(user);
         return user;
+    }
+
+    @RequestMapping("/getUser")
+    @ResponseBody
+    public TUser getUser(){
+        return userService.getByIdNew(18);
     }
 }
