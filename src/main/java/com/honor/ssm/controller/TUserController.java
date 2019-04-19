@@ -39,4 +39,13 @@ public class TUserController {
     public TUser getUser(){
         return userService.getByIdNew(33);
     }
+
+    @RequestMapping("/updateUser")
+    @ResponseBody
+    public TUser updateser(){
+        TUser user = userService.getByIdNew(33);
+        user.setNickname("daitiancihonor");
+        return userService.updateByIdNew(user);
+    }
+
 }

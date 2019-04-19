@@ -23,5 +23,7 @@ public interface ITUserService extends IService<TUser> {
 
     TUser getByIdNew(Integer id);
 
+    TUser updateByIdNew(TUser user);
+
     List<TUser> listNew();
 }
