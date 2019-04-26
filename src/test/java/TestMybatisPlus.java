@@ -3,6 +3,8 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.honor.ssm.entity.TUser;
 import com.honor.ssm.service.ITUserService;
+import com.honor.ssm.webservice.Greeting;
+import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,5 +32,20 @@ public class TestMybatisPlus {
         IPage<TUser> resoult = userService.page(iPage,condition);
 
         System.out.println(resoult);
+    }
+
+    @Test
+    public void testClient(){
+        try {
+            JaxWsProxyFactoryBean factoryBean = new JaxWsProxyFactoryBean();
+            factoryBean.setAddress("http://localhost:8080/ssm/webservice/Greeting?wsdl");
+            factoryBean.setServiceClass(Greeting.class);//通过接口指定请求方法名称/返回类型/参数
+            Greeting ex =(Greeting)factoryBean.create();
+
+            Object object = ex.greeting("daitc");//请求完毕后、类型接收
+            System.out.println(object.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

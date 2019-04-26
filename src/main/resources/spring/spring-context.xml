@@ -27,4 +27,6 @@
     <import resource="classpath:spring/spring-datasource.xml"/>
 
     <import resource="classpath:spring/spring-redis.xml"/>
+
+    <import resource="classpath:spring/spring-cxf.xml"/>
 </beans>
