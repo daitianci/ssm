@@ -1,12 +1,12 @@
 package com.honor.ssm.webservice.impl;
 
-import com.honor.ssm.webservice.Greeting;
+import com.honor.ssm.webservice.HelloWS;
 
 import javax.jws.WebService;
 import java.util.Calendar;
 
-@WebService(endpointInterface="com.honor.ssm.webservice.Greeting",serviceName = "Greeting")
-public class GreetingImpl implements Greeting {
+@WebService
+public class HelloWSImpl implements HelloWS {
     public String greeting(String userName) {
         return "Hello " + userName + ", currentTime is "
                 + Calendar.getInstance().getTime();

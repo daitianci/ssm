@@ -2,8 +2,6 @@ package com.honor.ssm.controller;
 
 import com.honor.ssm.entity.TUser;
 import com.honor.ssm.service.ITUserService;
-import com.honor.ssm.webservice.Greeting;
-import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 

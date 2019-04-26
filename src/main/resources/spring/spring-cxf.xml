@@ -4,5 +4,5 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
                         http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
 
-    <jaxws:endpoint id="greeting" implementor="com.honor.ssm.webservice.impl.GreetingImpl" address="/Greeting"/>
+    <jaxws:endpoint id="hello" implementor="com.honor.ssm.webservice.impl.HelloWSImpl" address="/hello"/>
 </beans>

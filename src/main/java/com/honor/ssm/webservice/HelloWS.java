@@ -4,6 +4,6 @@ import javax.jws.WebParam;
 import javax.jws.WebService;
 
 @WebService
-public interface Greeting {
+public interface HelloWS {
     public String greeting(@WebParam(name="username")String userName);
 }

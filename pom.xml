@@ -316,6 +316,32 @@
                     <uriEncoding>UTF-8</uriEncoding>
                 </configuration>
             </plugin>
+
+            <!--CXF-->
+            <!--maven tab 然后上面工具栏 Execute maven goal 输入语句 generate-resources-->
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-codegen-plugin</artifactId>
+                <version>3.1.4</version>
+                <executions>
+                    <execution>
+                        <id>generate-sources</id>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <!--源码生成地址-->
+                            <sourceRoot>src/main/java</sourceRoot>
+                            <wsdlOptions>
+                                <wsdlOption>
+                                    <wsdl>http://localhost:8080/ssm/webservice/hello?wsdl</wsdl>
+                                </wsdlOption>
+                            </wsdlOptions>
+                        </configuration>
+                        <goals>
+                            <goal>wsdl2java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 </project>
