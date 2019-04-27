@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <style>
+            html, body {
+                margin: 0;
+                padding: 0;
+            }
+
+            .container {
+                height: 100%;
+                width: 100%;
+                position: fixed;
+                display: flex; /*设为伸缩容器*/
+                flex-flow: row; /*伸缩项目单行排列*/
+                background-color: #00bbee;
+            }
+
+            /*.container_left {*/
+                /*width: 200px; !*固定宽度*!*/
+                /*border: 1px solid #E8E8E8;*/
+                /*margin: 3px;*/
+            /*}*/
+
+            /*.container_right {*/
+                /*flex: 1; !*这里设置为占比1，填充满剩余空间*!*/
+                /*border: 1px solid #E8E8E8;*/
+                /*margin: 3px;*/
+            /*}*/
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="container_left">
+
+            </div>
+            <div class="container_right">
+
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            function testClick(a) {
+                alert("ifreme method:" + a);
+            }
+        </script>
+    </body>
+</html>

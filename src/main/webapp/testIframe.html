@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <style>
+            html, body {
+                margin: 0;
+                padding: 0;
+            }
+
+            .container {
+                height: 100%;
+                width: 100%;
+                position: fixed;
+                display: flex; /*设为伸缩容器*/
+                flex-flow: row; /*伸缩项目单行排列*/
+            }
+
+            .container_left {
+                width: 200px; /*固定宽度*/
+                border: 1px solid #E8E8E8;
+                margin: 3px;
+            }
+
+            .container_right {
+                flex: 1; /*这里设置为占比1，填充满剩余空间*/
+                border: 1px solid #E8E8E8;
+                margin: 3px;
+            }
+
+            .container_left li {
+                list-style-type: none;
+                height: 30px;
+                line-height: 30px;
+                font-family: 微软雅黑;
+            }
+
+            .container_left a i {
+                margin-right: 5px;
+            }
+
+            .container_left a:link, .container_left a:visited {
+                text-decoration: none;
+                color: #000;
+            }
+
+            .container_left a:hover, .container_left a:active {
+                text-decoration: none;
+                color: #F00;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="container_left">
+                <ul>
+                    <li><a href="#" onclick="testClick('1')"><i class="fa fa-map-marker fa-lg"></i>灾害点1</a></li>
+                    <li><a href="#" onclick="testClick('2')"><i class="fa fa-map-marker fa-lg"></i>灾害点1</a></li>
+                    <li><a href="#"><i class="fa fa-map-marker fa-lg"></i>灾害点1</a></li>
+                    <li><a href="#"><i class="fa fa-map-marker fa-lg"></i>灾害点1</a></li>
+                    <li><a href="#"><i class="fa fa-map-marker fa-lg"></i>灾害点1</a></li>
+                    <li><a href="#"><i class="fa fa-map-marker fa-lg"></i>灾害点1</a></li>
+                    <li><a href="#"><i class="fa fa-map-marker fa-lg"></i>灾害点1</a></li>
+                    <li><a href="#"><i class="fa fa-map-marker fa-lg"></i>灾害点1</a></li>
+                    <li><a href="#"><i class="fa fa-map-marker fa-lg"></i>灾害点1</a></li>
+                    <li><a href="#"><i class="fa fa-map-marker fa-lg"></i>灾害点1</a></li>
+                    <li><a href="#"><i class="fa fa-map-marker fa-lg"></i>灾害点1</a></li>
+                    <li><a href="#"><i class="fa fa-map-marker fa-lg"></i>灾害点1</a></li>
+                    <li><a href="#"><i class="fa fa-map-marker fa-lg"></i>灾害点1</a></li>
+                </ul>
+            </div>
+            <div class="container_right">
+                <!--<iframe id="map" src="http://10.26.6.182:8085/home" style="width: 100%;height: 100%"></iframe>-->
+                <iframe id="map" src="http://localhost:8080/ssm/testIframeMethod.html" style="width: 100%;height: 100%"></iframe>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="plugins/jquery-easyui-1.5.4.2/jquery.min.js"></script>
+        <script type="text/javascript">
+            function testClick(a) {
+                //调用子页面的方法,表示获取了嵌入在iframe中的子页面的window对象。  []将JQuery对象转成DOM对象，用DOM对象的contentWindow获取子页面window对象。
+                var childWindow = $("#map")[0].contentWindow;
+                childWindow.testClick(a);
+            }
+        </script>
+    </body>
+</html>
