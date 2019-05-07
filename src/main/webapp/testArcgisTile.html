@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta
+                name="viewport"
+                content="initial-scale=1,maximum-scale=1,user-scalable=no"
+        />
+        <!--
+      ArcGIS API for JavaScript, https://js.arcgis.com
+      For more information about the layers-featurelayer sample, read the original sample description at developers.arcgis.com.
+      https://developers.arcgis.com/javascript/latest/sample-code/layers-featurelayer/index.html
+      -->
+        <title>Intro to FeatureLayer - 4.11</title>
+
+        <link
+                rel="stylesheet"
+                href="https://js.arcgis.com/4.11/esri/themes/light/main.css"
+        />
+        <script src="https://js.arcgis.com/4.11/"></script>
+
+        <style>
+            html,
+            body,
+            #viewDiv {
+                padding: 0;
+                margin: 0;
+                height: 100%;
+                width: 100%;
+            }
+        </style>
+
+        <script>
+            require([
+                "esri/Map",
+                "esri/views/MapView",
+                "esri/layers/TileLayer"
+            ], function(Map, MapView, TileLayer) {
+                var map = new Map();
+
+                var view = new MapView({
+                    container: "viewDiv",
+                    map: map
+                });
+
+                var XMMAPLayer = new TileLayer({
+                    url: "http://mapapi.xmtfj.gov.cn/arcgis/rest/services/HB/CGCS_XMMAP/MapServer"
+                });
+
+                var XMMA_CVAPLayer = new TileLayer({
+                    url: "http://mapapi.xmtfj.gov.cn/arcgis/rest/services/HB/CGCS_XMMAP_CVA/MapServer"
+                });
+
+                map.add(XMMAPLayer);
+                map.add(XMMA_CVAPLayer);
+            });
+        </script>
+    </head>
+
+    <body>
+        <div id="viewDiv"></div>
+    </body>
+</html>
