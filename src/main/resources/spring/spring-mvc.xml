@@ -25,6 +25,7 @@
     <mvc:annotation-driven>
         <mvc:message-converters>
             <ref bean="stringHttpMessageConverter"/>
+            <ref bean="jsonHttpMessageConverter"/>
             <!--<ref bean="fastJsonHttpMessageConverter"/>-->
         </mvc:message-converters>
     </mvc:annotation-driven>
@@ -44,6 +45,27 @@
     <bean id="stringHttpMessageConverter" class="org.springframework.http.converter.StringHttpMessageConverter">
         <!--防止返回中文乱码-->
         <property name="supportedMediaTypes" value="text/html;charset=UTF-8"/>
+    </bean>
+
+    <!--统一配置时间格式json转化-->
+    <bean id="jsonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>text/html;charset=UTF-8</value>
+                <value>application/json;charset=UTF-8</value>
+                <value>application/x-www-form-urlencoded;charset=UTF-8</value>
+            </list>
+        </property>
+        <property name="objectMapper">
+            <bean class="com.fasterxml.jackson.databind.ObjectMapper">
+                <property name="dateFormat">
+                    <bean class="java.text.SimpleDateFormat">
+                        <!-- 设置全局返回JSON到前端时日期格式化 -->
+                        <constructor-arg type="java.lang.String" value="yyyy-MM-dd HH:mm:ss"/>
+                    </bean>
+                </property>
+            </bean>
+        </property>
     </bean>
 
     <!--多附件上传解析器定义-->
