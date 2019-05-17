@@ -9,35 +9,67 @@
     </head>
     <body>
         <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-        <div id="main" style="width: 600px;height:400px;"></div>
-
+        <div id="divBar" style="width: 600px;height:400px;"></div>
+        <div id="divPie" style="width: 600px;height:400px;"></div>
         <script type="text/javascript">
             $(function () {
+                //*****************************柱状图开始*********************************
                 // 基于准备好的dom，初始化echarts实例
-                var myChart = echarts.init($("#main")[0]);
+                var myChartBar = echarts.init($("#divBar")[0]);
 
                 // 指定图表的配置项和数据
-                var option = {
+                var optionBar = {
                     title: {
-                        text: 'ECharts 入门示例'
+                        text: '各区反馈率统计'
                     },
                     tooltip: {},
                     legend: {
-                        data: ['销量']
+                        data: ['反馈率']
                     },
                     xAxis: {
-                        data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+                        data: ["思明区", "湖里区", "海沧区", "集美区", "翔安区", "同安区"]
                     },
                     yAxis: {},
                     series: [{
-                        name: '销量',
+                        name: '反馈率',
                         type: 'bar',
-                        data: [5, 20, 36, 10, 10, 20]
+                        data: [60, 90, 80, 75, 85, 95]
                     }]
                 };
-
                 // 使用刚指定的配置项和数据显示图表。
-                myChart.setOption(option);
+                myChartBar.setOption(optionBar);
+
+                //*****************************柱状图结束*********************************
+
+                //*****************************饼图开始*********************************
+                var myChartPie = echarts.init($("#divPie")[0]);
+
+                // 指定图表的配置项和数据
+                var optionPie = {
+                    title: {
+                        text: '各区反馈率统计'
+                    },
+                    tooltip: {},
+                    legend: {
+                        orient: 'vertical',
+                        x: 'right',
+                        data: ["思明区", "湖里区", "海沧区", "集美区", "翔安区", "同安区"]
+                    },
+                    series: [{
+                        name: '反馈率',
+                        type: 'pie',
+                        data:[
+                            {value:80, name:'思明区'},
+                            {value:70, name:'湖里区'},
+                            {value:90, name:'海沧区'},
+                            {value:60, name:'集美区'},
+                            {value:75, name:'翔安区'},
+                            {value:85, name:'同安区'}
+                        ]
+                    }]
+                };
+                myChartPie.setOption(optionPie);
+                //*****************************饼图开始*********************************
             });
         </script>
     </body>

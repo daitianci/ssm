@@ -56,8 +56,9 @@
         <div class="container">
             <div class="container_left">
                 <ul>
-                    <li><a href="#" onclick="testClick('1')"><i class="fa fa-map-marker fa-lg"></i>灾害点1</a></li>
-                    <li><a href="#" onclick="testClick('2')"><i class="fa fa-map-marker fa-lg"></i>灾害点1</a></li>
+                    <li><a href="#" onclick="testClick('87CF7A176C514D3DE05396061A0AC756')"><i class="fa fa-map-marker fa-lg"></i>灾害点1</a></li>
+                    <li><a href="#" onclick="testClick('87CF7A176C584D3DE05396061A0AC756')"><i class="fa fa-map-marker fa-lg"></i>灾害点1</a></li>
+                    <li><a href="#" onclick="testClick('87CF7A176C714D3DE05396061A0AC756')"><i class="fa fa-map-marker fa-lg"></i>灾害点1</a></li>
                     <li><a href="#"><i class="fa fa-map-marker fa-lg"></i>灾害点1</a></li>
                     <li><a href="#"><i class="fa fa-map-marker fa-lg"></i>灾害点1</a></li>
                     <li><a href="#"><i class="fa fa-map-marker fa-lg"></i>灾害点1</a></li>
@@ -72,7 +73,7 @@
                 </ul>
             </div>
             <div class="container_right">
-                <iframe id="map" src="http://10.26.6.182:8085/home" style="width: 100%;height: 100%"></iframe>
+                <iframe id="map" src="http://10.26.6.182:8061/mobile" style="width: 100%;height: 100%"></iframe>
                 <!--<iframe id="map" src="http://localhost:8080/ssm/testIframeMethod.html" style="width: 100%;height: 100%"></iframe>-->
             </div>
         </div>
@@ -82,7 +83,7 @@
             function testClick(a) {
                 //调用子页面的方法,表示获取了嵌入在iframe中的子页面的window对象。  []将JQuery对象转成DOM对象，用DOM对象的contentWindow获取子页面window对象。
                 var childWindow = $("#map")[0].contentWindow;
-                childWindow.testClick(a);
+                childWindow.postMessage(a, 'http://10.26.6.182:8061/mobile');
             }
         </script>
     </body>

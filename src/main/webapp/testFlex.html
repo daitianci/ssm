@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>test flex</title>
+        <style>
+            html, body {
+                height: 100%;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            .container {
+                height: 50%;
+                display: flex; /*设为伸缩容器*/
+            }
+
+            .unti {
+                margin: 5px;
+                flex: 1;
+                border: #E8E8E8 solid 1px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div id="divPie1" class="unti"></div>
+            <div id="divPie2" class="unti"></div>
+            <div id="divPie3" class="unti"></div>
+        </div>
+        <div class="container">
+            <div id="divPie4" class="unti"></div>
+            <div id="divPie5" class="unti"></div>
+            <div id="divPie6" class="unti"></div>
+        </div>
+
+        <!-- 引入 echarts.js -->
+        <script src="plugins/echarts-4.2.1/echarts.min.js"></script>
+        <script src="plugins/jquery-easyui-1.5.4.2/jquery.min.js"></script>
+        <script type="text/javascript">
+            var myChartPie1 = null;
+            var myChartPie2 = null;
+            var myChartPie3 = null;
+            var myChartPie4 = null;
+            var myChartPie5 = null;
+            var myChartPie6 = null;
+
+            $(function () {
+                //*****************************饼图开始*********************************
+                // 指定图表的配置项和数据
+                var optionPie = {
+                    title: {
+                        text: '接收率统计'
+                    },
+                    tooltip: {},
+                    color: ['green', 'red'],
+                    legend: {
+                        orient: 'vertical',
+                        x: 'right',
+                        data: ["已接收", "未接收"]
+                    },
+                    series: [{
+                        name: '比例',
+                        type: 'pie',
+                        data: [
+                            {value: 70, name: '已接收'},
+                            {value: 30, name: '未接收'},
+                        ]
+                    }]
+                };
+
+                myChartPie1 = echarts.init($("#divPie1")[0]);
+                myChartPie1.setOption(getOption("思明区接收率统计", 50, 50));
+
+                myChartPie2 = echarts.init($("#divPie2")[0]);
+                myChartPie2.setOption(getOption("湖里区接收率统计", 70, 30));
+
+                myChartPie3 = echarts.init($("#divPie3")[0]);
+                myChartPie3.setOption(getOption("海沧区接收率统计", 60, 40));
+
+                myChartPie4 = echarts.init($("#divPie4")[0]);
+                myChartPie4.setOption(getOption("集美区接收率统计", 30, 70));
+
+                myChartPie5 = echarts.init($("#divPie5")[0]);
+                myChartPie5.setOption(getOption("翔安区接收率统计", 90, 10));
+
+                myChartPie6 = echarts.init($("#divPie6")[0]);
+                myChartPie6.setOption(getOption("翔安区接收率统计", 85, 15));
+
+                //*****************************饼图开始*********************************
+            });
+
+            function getOption(title, reveive, notReceive) {
+                return {
+                    title: {
+                        text: title
+                    },
+                    tooltip: {},
+                    color: ['green', 'red'],
+                    legend: {
+                        orient: 'vertical',
+                        x: 'right',
+                        data: ["已接收", "未接收"]
+                    },
+                    series: [{
+                        name: '比例',
+                        type: 'pie',
+                        data: [
+                            {value: reveive, name: '已接收'},
+                            {value: notReceive, name: '未接收'},
+                        ]
+                    }]
+                };
+            }
+
+            window.onresize = function () {
+                if (myChartPie1 != null) {
+                    myChartPie1.resize();
+                }
+                if (myChartPie2 != null) {
+                    myChartPie2.resize();
+                }
+                if (myChartPie3 != null) {
+                    myChartPie3.resize();
+                }
+                if (myChartPie4 != null) {
+                    myChartPie4.resize();
+                }
+                if (myChartPie5 != null) {
+                    myChartPie5.resize();
+                }
+                if (myChartPie6 != null) {
+                    myChartPie6.resize();
+                }
+            }
+        </script>
+    </body>
+</html>
